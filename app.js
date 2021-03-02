@@ -48,6 +48,10 @@ io.on("connection",(socket)=>{
   socket.on("new user",(data)=>{
     console.log("userData",data)
   })
+  socket.on("new chat",(data)=>{
+    console.log("=>",data)  
+    io.emit("new chat",data)
+  })
 
 
 })
