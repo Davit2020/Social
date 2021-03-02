@@ -1,0 +1,50 @@
+<%- include("components/header.ejs") -%>
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header clearfix">
+                    <h2 class="pull-left">Articles Details</h2>
+                    <a href="/admin/articles/articleCreate" class="btn btn-success pull-right">Add New Article</a>
+                </div>
+           
+                       <table class='table table-bordered table-striped' >
+                           <thead>
+                               <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                   <th>Content</th>
+                                    <th>Imgname</th>
+                                    <td>Action</td>
+                                </tr>
+                             </thead>
+                             <tbody>
+
+                                <% for(let article of articles){ %>
+                                  <tr>
+                                    <td><%= article['id'] %> </td>
+                                    <td><%= article['title'] %> </td>
+                                    <td><%= article['description'] %> </td>
+                                    <td><%= article['content'] %> </td>
+                                    <td><%= article['image'] %> </td>
+
+                                    <td>
+                                       <a href='#' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>
+                                      <a href='#' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>
+                                      <a href='/admin/articles/delete/<%= article['id'] %>' title='Update Record' data-toggle='tooltip'><button class="deleteButton" id="<%= article['id'] %>" >delete</button></a>
+                                      <a href='/admin/articles/edit/<%= article['id'] %>' title='Update Record' data-toggle='tooltip'><button >edit</button></a>
+                                   </td>
+                                </tr>
+
+
+
+                             <% } %>
+                                 
+                         <script src="/javascripts/admin.js"></script>
+                           </tbody>
+
+
+
+
+<%- include("components/footer.ejs") -%>

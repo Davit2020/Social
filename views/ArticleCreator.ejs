@@ -1,0 +1,16 @@
+<%- include("components/header.ejs") -%>
+<div class="container text-center">
+    <h1>Add New Article</h1>
+<form action="/admin/articles/articleCreate" method="post" enctype="multipart/form-data">
+    <p>Title<br><input type="text" name="title"></p>
+    <p>Description<br><input type="text" name="description"></p>
+    <p>Content<br><textarea name="content">
+        
+    </textarea></p>
+    <p><input type="file" name="articleImg">
+    
+    </p>
+    <p><input type="submit" value="Add New Article"></p>
+</form>
+</div>
+<%- include("components/footer.ejs") -%>
