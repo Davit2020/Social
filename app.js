@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser')
 const mongoose=require("mongoose")
+const http = require('http');
 const { mongodbUrl}=require("./config/config")
 
 const indexRouter = require('./routes/IndexRouter');
@@ -33,6 +34,25 @@ db.on("connected",()=>{
 
 
 const app = express();
+
+const server = http.createServer(app);
+
+const io=require("socket.io")(server)
+
+
+io.on("connection",(socket)=>{
+
+  console.log("new user conected")
+  console.log(socket.id)
+ 
+  socket.on("new user",(data)=>{
+    console.log("userData",data)
+  })
+
+
+})
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -68,4 +88,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports ={
+  app,
+  server
+}

@@ -1,0 +1,16 @@
+<%- include("components/header.ejs") -%>
+<h1 class="text-center">Welcome <%= user.username %></h1>
+<form id="messageForm">
+	<p>
+	<textarea name="message">
+		
+	</textarea>	
+	</p>
+	<p><input type="hidden" name="id" value="<%= user.id %>"></p>
+	<p><input type="hidden" name="username" value="<%= user.username %>"></p>
+	<p><input type="submit" value="Add Post"></p>
+	
+</form>
+
+<%- include("components/footer.ejs") -%>
+

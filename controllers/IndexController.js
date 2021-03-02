@@ -5,6 +5,10 @@ class IndexController{
         let articles=await Article.find()
         res.render("index",{articles:articles})
     }
+    chatView(req,res){
+        let user=req.user
+        res.render("chat",{user})
+    }
 }
 
 module.exports=new IndexController()
