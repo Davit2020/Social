@@ -100,7 +100,7 @@ function newPost(info,newMessage){
             .then(data=>{
                 console.log(data)
                 let elem = document.getElementsByClassName(data.id)
-                console('test',elem)
+                
                 elem[2].remove()
                 elem[1].remove()
                 elem[0].remove()
