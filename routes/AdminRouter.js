@@ -3,6 +3,7 @@ const path=require("path")
 const multer=require("multer")
 const bodyParser = require('body-parser')
 const { AdminView, getAllArticles,createArticleView,  addNewArticle,deleteArticle,editpage, editArticle} =require("../controllers/AdminController")
+const {addchat, deleteMessage}=require("../controllers/ChatCantroller")
 const router = express.Router();
 
 let jsonParser = bodyParser.json()
@@ -32,5 +33,6 @@ router.post("/articles/articleCreate",upload.single("articleImg"), addNewArticle
 router.get("/articles/delete/:id", deleteArticle)
 router.get("/articles/edit/:id", editpage)
 router.post("/articles/articleedit/:id",upload.single("articleImg"),editArticle )
-
+router.post("/chat/addchat", addchat)
+router.get("/chat/delete/:id", deleteMessage)
 module.exports = router;

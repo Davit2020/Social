@@ -42,8 +42,7 @@ const io=require("socket.io")(server)
 
 io.on("connection",(socket)=>{
 
-  console.log("new user conected")
-  console.log(socket.id)
+  
  
   socket.on("new user",(data)=>{
     console.log("userData",data)
@@ -71,7 +70,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/todo',verifyToken,(req,res,next)=>{
-  console.log("ru",req.user)
+ 
   next()
 }, todoRouter);
 app.use('/admin',verifyToken, adminRouter);

@@ -1,5 +1,17 @@
 <%- include("components/header.ejs") -%>
 <h1 class="text-center">Welcome <%= user.username %></h1>
+<div class="container">
+<main>
+	
+	<% for( let info of chat) { %>
+		<p class="<%=info._id %>"><%= info.message%></p>
+		<h1 class="<%=info._id %>"><%= info.name %></h1> 
+		<% if(info.userId=user.id ) { %>
+			<button id='<%=info._id %>' class="deleteComment" >Delete </button>
+			<%}%>
+		<p class="<%=info._id %>"><%= info.createdAt%></p>
+	  <% } %>
+</main>
 <form id="messageForm">
 	<p>
 	<textarea name="message">
@@ -11,9 +23,6 @@
 	<p><input type="submit" value="Add Post"></p>
 	
 </form>
-<main>
-    
-</main>
-
+</div>
 <%- include("components/footer.ejs") -%>
 

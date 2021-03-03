@@ -1,13 +1,14 @@
 const {Article}=require("../models/ArticleModel")
-
+const { Chat }=require("../models/ChatModel")
 class IndexController{
     async home(req,res){
         let articles=await Article.find()
         res.render("index",{articles:articles})
     }
-    chatView(req,res){
+    async chatView(req,res){
         let user=req.user
-        res.render("chat",{user})
+        let chat= await Chat.find()
+        res.render("chat",{user ,chat})
     }
 }
 
